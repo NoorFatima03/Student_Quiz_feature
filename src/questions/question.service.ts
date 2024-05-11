@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Console } from 'console';
 import { QuestionDto } from 'src/dto/question.dto';
 import { quiz_historyDto } from 'src/dto/student_quiz_history.dto';
 import { Std_quiz_history } from 'src/entities/std_quiz_history.entity';

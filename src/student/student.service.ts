@@ -15,7 +15,11 @@ export class StudentService {
   }
 
   findAll():Promise<Students[]>{
-    return this.student.find();
+    return this.student.find({
+      relations:{
+          stdcourseinfo: true,
+      }
+  });
    }
    
   /*findOne(id: number) {
@@ -23,7 +27,7 @@ export class StudentService {
 }*/
    create(createStudent: CreateStudentDto){
     const stud:Students = new Students();
-    stud.std_id = createStudent.id;
+    stud.stud_id = createStudent.stud_id;
     stud.name= createStudent.name;
     stud.email = createStudent.email;
     stud.password = createStudent.pass;
@@ -32,7 +36,7 @@ export class StudentService {
    }
    update(id: number, updateStudent: CreateStudentDto){
     const stud:Students = new Students();
-    stud.std_id = id; 
+    stud.stud_id = id; 
     stud.name = updateStudent.name;
     stud.email = updateStudent.email;
     stud.password = updateStudent.pass;

@@ -18,7 +18,13 @@ export class CourseService {
   }*/
 
   findAll(): Promise<Course[]>{
-    return this.course.find();
+    return this.course.find({
+      relations:{
+          student_course_info :true,
+          quizz: true,
+          
+      }
+  });
   }
    create(createcoursedto: CreateCourseDto){
     const courses: Course = new Course();

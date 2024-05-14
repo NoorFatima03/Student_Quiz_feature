@@ -10,8 +10,11 @@ import { Teachers } from './entities/teacher.entity';
 import { TeacherModule } from './teacher/teacher.module';
 import { QuestionModule } from './questions/question.module';
 import { Questions } from './entities/tbl_question.entity';
-import { TestModule } from './test/test.module';
 import { Std_quiz_history } from './entities/std_quiz_history.entity';
+import { Student_course_info } from './entities/student_course_info.entity';
+import { StudentCourseModule } from './Student_course_info/studentinfo.module';
+import { QuizModule } from './quiz/quiz.module';
+import { Tbl_quizs } from './entities/tbl_quiz.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -21,10 +24,10 @@ import { Std_quiz_history } from './entities/std_quiz_history.entity';
     password: '11223344',
     username: 'postgres',
     database: 'localhost',
-    entities: [Students, Course, Teachers, Questions, Std_quiz_history],
+    entities: [Students, Course, Teachers, Questions, Std_quiz_history,Student_course_info, Tbl_quizs],
     synchronize: true,
     logging: true,
-  }), StudentModule, CourseModule, TeacherModule, QuestionModule],
+  }), StudentModule, CourseModule, TeacherModule, QuestionModule, StudentCourseModule, QuizModule],
   controllers: [AppController],
   providers: [AppService],
 })

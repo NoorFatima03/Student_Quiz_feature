@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Tbl_quizs } from "./tbl_quiz.entity";
 
 @Entity()
 export class Std_quiz_history{
@@ -20,5 +21,10 @@ export class Std_quiz_history{
     result: number;
     @Column()
     feedback: string;
+    @ManyToOne(() => Tbl_quizs, (quiz) => quiz.history)
+    @JoinColumn({
+        name: 'quiz_id'
+    })
+    quiz: Tbl_quizs;
 
 }

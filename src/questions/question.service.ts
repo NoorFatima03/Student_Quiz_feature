@@ -15,9 +15,13 @@ export class QuestionService {
         private quiz_history : Repository<Std_quiz_history>
     ){}
 
-  getHello(): Promise<Questions[]> {
-    return this.quest.find();
-  }
+   getHello() {
+     return this.quest.find({
+       relations:{
+        QUIZ: true,
+       }
+     });
+   }
 
   create(createdto : QuestionDto){
     const que: Questions = new Questions;

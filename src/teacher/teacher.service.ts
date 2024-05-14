@@ -21,8 +21,15 @@ export class TeacherService {
   }*/
 
   findAll(): Promise<Teachers[]>{
-    return this.teacher.find();
+    return this.teacher.find({
+      relations:{
+        studentinfo: true,
+        quiz: true,
+
+      }
+    })
   }
+
    create(createcoursedto: TeacherCreateDto){
     const teach: Teachers = new Teachers();
     teach.teacher_id = createcoursedto.id;
